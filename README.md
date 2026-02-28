@@ -8,6 +8,7 @@ Built with a focus on European/ESA satellites and the Polish space sector.
 
 - Track multiple satellites (ISS, EagleEye, Sentinel-6A, and more)
 - Pass prediction with rise/set times, max elevation, and compass directions
+- **Visibility detection** — shows which passes are actually visible (sunlit satellite + dark sky)
 - Color-coded elevation (green = great, yellow = ok, red = low)
 - Local timezone support (defaults to Europe/Warsaw)
 - TLE caching (4-hour expiry) to avoid repeated network requests
@@ -35,6 +36,9 @@ sat-spotter --lat 50.06 --lon 19.94 --hours 48
 # Only show high-elevation passes
 sat-spotter --elev 30
 
+# Only show passes visible to the naked eye
+sat-spotter --visible-only --hours 48
+
 # Different timezone
 sat-spotter --tz Europe/Berlin
 ```
@@ -48,6 +52,7 @@ sat-spotter --tz Europe/Berlin
 | `--hours` | 24 | Prediction window in hours |
 | `--elev` | 10 | Minimum elevation in degrees |
 | `--tz` | Europe/Warsaw | Timezone for display |
+| `--visible-only` | false | Only show passes visible to the naked eye |
 
 ## Configuring satellites
 

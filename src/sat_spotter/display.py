@@ -43,7 +43,7 @@ def to_local_time(time, timezone: ZoneInfo, format = '%H:%M') -> str:
     local_str = local_dt.strftime(format)
     return local_str
 
-def print_passes(passes: list, timezone: ZoneInfo, observer_lat: float, observer_lon: float):
+def print_passes(passes: list, timezone: ZoneInfo, observer_lat: float, observer_lon: float, show_only_visible: bool):
     console = Console()
     table = Table(title=f"Satellite passes over {observer_lat}, {observer_lon}")
     table.add_column("Date", justify="center")
@@ -54,7 +54,8 @@ def print_passes(passes: list, timezone: ZoneInfo, observer_lat: float, observer
     table.add_column("Max Elev", justify="center")
     table.add_column("Rise Dir", justify="center")
     table.add_column("Set Dir", justify="center")
-    table.add_column("Visible", justify="center")
+    if not show_only_visible:
+        table.add_column("Visible", justify="center")
     
     for p in passes:
         name = p['name']
@@ -74,6 +75,10 @@ def print_passes(passes: list, timezone: ZoneInfo, observer_lat: float, observer
         rise_dir = degrees_to_compass(p['rise_azimuth'])
         set_dir = degrees_to_compass(p['set_azimuth'])
         visible = "[green]Yes[/green]" if p['is_visible'] else "No"
-        table.add_row(event_date, name, rise_time, set_time, event_duration, elevation, rise_dir, set_dir, visible)
+        if not show_only_visible:
+            table.add_row(event_date, name, rise_time, set_time, event_duration, elevation, rise_dir, set_dir, visible)
+        else:
+            if p['is_visible']:
+                table.add_row(event_date, name, rise_time, set_time, event_duration, elevation, rise_dir, set_dir)
 
     console.print(table)

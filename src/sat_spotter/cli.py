@@ -20,6 +20,7 @@ def main():
     parser.add_argument("--hours", type=int, default=24, help="Hours to look ahead")
     parser.add_argument("--elev", type=int, default=10, help="Minimum elevation filter")
     parser.add_argument("--tz", type=str, default="Europe/Warsaw", help="Timezone for time display")
+    parser.add_argument("--visible-only", dest="visible_only", action="store_true", help="Only show visible passes")
     args = parser.parse_args()
 
     observer_lat: float = args.lat
@@ -27,6 +28,7 @@ def main():
     chosen_timezone: ZoneInfo = ZoneInfo(args.tz)
     prediction_window: int = args.hours
     minimum_elevation_filter: int = args.elev
+    show_only_visible: bool = args.visible_only
 
     config_path = Path(__file__).parent.parent.parent / "satellites.json"
     satellites = json.load(open(config_path))
@@ -43,7 +45,7 @@ def main():
         all_passes.extend(satellite_pass)
 
     all_passes.sort(key=lambda p: p['rise'].tt)
-    print_passes(all_passes, chosen_timezone, observer_lat, observer_lon)
+    print_passes(all_passes, chosen_timezone, observer_lat, observer_lon, show_only_visible)
 
 
 if __name__ == "__main__":
