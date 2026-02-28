@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: sat-spotter
+Version: 0.1.0
+Summary: Satellite tracking and pass prediction
+Requires-Python: >=3.12
+Requires-Dist: skyfield>=1.49
+Requires-Dist: httpx>=0.27
+Requires-Dist: rich>=13.0
+Requires-Dist: numpy>=1.26
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.5; extra == "dev"
+Provides-Extra: viz
+Requires-Dist: matplotlib>=3.9; extra == "viz"
+Requires-Dist: plotly>=5.22; extra == "viz"
+Provides-Extra: learn
+Requires-Dist: astropy>=6.1; extra == "learn"
+Requires-Dist: poliastro>=0.17; extra == "learn"
+Requires-Dist: jupyterlab>=4.2; extra == "learn"

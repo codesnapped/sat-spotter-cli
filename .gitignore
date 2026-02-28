@@ -1,0 +1,12 @@
+
+.obsidian/
+.claude/
+.venv/
+
+.DS_Store
+
+Home.md
+
+journal/
+learning/
+project/
