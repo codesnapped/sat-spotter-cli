@@ -1,13 +1,10 @@
 import httpx
 from skyfield.api import EarthSatellite, load
-from pathlib import Path
 import time
 
-BASE_CACHE_DIR = Path(__file__).parent.parent.parent / "data" / "cache"
+from sat_spotter.config import BASE_CACHE_DIR, DEFAULT_CACHE_DURATION
 
 def read_cache(norad_id: int) -> str | None:
-    DEFAULT_CACHE_DURATION = 4 * 3600
-
     cache_file = BASE_CACHE_DIR / f"{norad_id}.tle"
     cache_data: str | None = None
 

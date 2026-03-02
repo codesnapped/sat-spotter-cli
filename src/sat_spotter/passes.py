@@ -1,9 +1,9 @@
 
 
 import json
-from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from sat_spotter.config import CONFIG_PATH
 from sat_spotter.display import group_passes, print_passes
 from sat_spotter.location import observer
 from sat_spotter.predict import find_passes
@@ -18,8 +18,7 @@ def run_passes(args):
     minimum_elevation_filter: int = args.elev
     show_only_visible: bool = args.visible_only
 
-    config_path = Path(__file__).parent.parent.parent / "satellites.json"
-    satellites = json.load(open(config_path))
+    satellites = json.load(open(CONFIG_PATH))
 
     all_passes = []
     observer_location = observer(observer_lat, observer_lon)

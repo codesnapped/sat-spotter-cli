@@ -28,19 +28,22 @@ pip install -e .
 
 ```bash
 # Default: 24h forecast for Warsaw
-sat-spotter
+sat-spotter passes
 
 # Custom location and time window
-sat-spotter --lat 50.06 --lon 19.94 --hours 48
+sat-spotter passes --lat 50.06 --lon 19.94 --hours 48
 
 # Only show high-elevation passes
-sat-spotter --elev 30
+sat-spotter passes --elev 30
 
 # Only show passes visible to the naked eye
-sat-spotter --visible-only --hours 48
+sat-spotter passes --visible-only --hours 48
 
 # Different timezone
-sat-spotter --tz Europe/Berlin
+sat-spotter passes --tz Europe/Berlin
+
+# Search for a satellite and add to tracked list
+sat-spotter search sentinel
 ```
 
 ### Options
@@ -66,7 +69,7 @@ Edit `satellites.json` to add or remove tracked satellites:
 ]
 ```
 
-Find NORAD IDs at [celestrak.org](https://celestrak.org/).
+Or use `sat-spotter search <name>` to find and add satellites interactively.
 
 ## Tech stack
 

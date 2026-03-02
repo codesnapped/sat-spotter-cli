@@ -5,7 +5,6 @@ import argparse
 from sat_spotter.passes import run_passes
 from sat_spotter.search import run_search
 
-
 def main():
 
     parser = argparse.ArgumentParser(description="Satellite pass prediction")
