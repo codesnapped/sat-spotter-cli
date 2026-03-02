@@ -22,6 +22,9 @@ def main():
     search_parser.add_argument("name", type=str, help="Satellite name to search for")
 
     args = parser.parse_args()
+    if args.command is None:
+        args = parser.parse_args(["passes"])
+    
     if args.command == "passes":
         run_passes(args)
     elif args.command == "search":
