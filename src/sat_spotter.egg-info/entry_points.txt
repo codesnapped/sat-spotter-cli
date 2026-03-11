@@ -1,2 +1,0 @@
-[console_scripts]
-sat-spotter = sat_spotter.cli:main
