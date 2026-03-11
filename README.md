@@ -1,4 +1,4 @@
-# sat-spotter
+# sat-spotter-cli
 
 CLI tool for predicting satellite passes over your location. Fetches real TLE data from Celestrak, computes pass times using SGP4 propagation, and displays results with elevation, direction, and duration.
 
