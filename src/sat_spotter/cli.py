@@ -4,6 +4,7 @@ import argparse
 
 from sat_spotter.list_sats import run_list
 from sat_spotter.passes import run_passes
+from sat_spotter.plot import run_plot
 from sat_spotter.remove import run_remove
 from sat_spotter.search import run_search
 
@@ -21,6 +22,13 @@ def main():
     passes_parser.add_argument("--visible-only", dest="visible_only", action="store_true", help="Only show visible passes")
     passes_parser.add_argument("--export", type=str, help="Export passes to file (csv or json)")
 
+    plot_parser = subparsers.add_parser("plot", help="Plots the satellite's path")
+    plot_parser.add_argument("--lat", type=float, default=52.23, help="Observer location latitude")
+    plot_parser.add_argument("--lon", type=float, default=21.01, help="Observer location longitude")
+    plot_parser.add_argument("--hours", type=int, default=24, help="Hours to look ahead")
+    plot_parser.add_argument("--elev", type=int, default=10, help="Minimum elevation filter")
+    plot_parser.add_argument("--tz", type=str, default="Europe/Warsaw", help="Timezone for time display")
+
     search_parser = subparsers.add_parser("search", help="Search for satellites on Celestrak")
     search_parser.add_argument("name", type=str, help="Satellite name to search for")
 
@@ -33,6 +41,8 @@ def main():
     
     if args.command == "passes":
         run_passes(args)
+    elif args.command == "plot":
+        run_plot(args)
     elif args.command == "search":
         run_search(args)
     elif args.command == "remove":

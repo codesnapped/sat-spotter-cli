@@ -27,6 +27,8 @@ def group_passes(times, satellite: EarthSatellite, location: GeographicPosition,
             "rise_azimuth": rise_az.degrees,
             "set_azimuth": set_az.degrees,
             "is_visible": is_visible(satellite, location, times[i + 1]),
+            "satellite": satellite,
+            "location": location,
         }
         if alt.degrees > min_elevation:
             passes_list.append(pass_data)

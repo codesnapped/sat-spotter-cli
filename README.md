@@ -12,6 +12,7 @@ Built with a focus on European/ESA satellites and the Polish space sector.
 - Color-coded elevation (green = great, yellow = ok, red = low)
 - Local timezone support (defaults to Europe/Warsaw)
 - TLE caching (4-hour expiry) to avoid repeated network requests
+- Export passes to CSV or JSON files
 - Configurable via CLI flags and `satellites.json`
 - Satellite management — search, add, list, and remove tracked satellites
 - Duplicate detection when adding satellites
@@ -44,6 +45,10 @@ sat-spotter passes --visible-only --hours 48
 # Different timezone
 sat-spotter passes --tz Europe/Berlin
 
+# Export to CSV or JSON
+sat-spotter passes --export passes.csv
+sat-spotter passes --export passes.json
+
 # Search for a satellite and add to tracked list
 sat-spotter search sentinel
 
@@ -73,6 +78,7 @@ sat-spotter remove
 | `--elev` | 10 | Minimum elevation in degrees |
 | `--tz` | Europe/Warsaw | Timezone for display |
 | `--visible-only` | false | Only show passes visible to the naked eye |
+| `--export` | — | Export passes to file (supports `.csv` and `.json`) |
 
 ## Configuring satellites
 
