@@ -1,5 +1,5 @@
 [project]
-name = "sat-spotter"
+name = "sat-spotter-cli"
 version = "0.1.0"
 description = "Satellite tracking and pass prediction"
 requires-python = ">=3.12"
